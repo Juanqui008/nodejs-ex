@@ -16,7 +16,7 @@ const bot = new TelegramBot(token, {polling: true});
  });
  
  bot.onText(/\Lista de comandos/, (msg) => {
- bot.sendMessage(msg.chat.id, "Hola, Hola Josemi, Córtate, córtate, Is that allowed?, Shut up, Hurricane Katrina, A quién le estás diciendo shut up, Chillin in the hot tub, Pussy, Hostión, I love u bitch, Fuck off, Thanks, I´m calling the police, ");    
+ bot.sendMessage(msg.chat.id, "Hola, Hola Josemi, Córtate, córtate, Is that allowed?, Shut up, Hurricane Katrina, A quién le estás diciendo shut up, Chillin in the hot tub, Pussy, Hostión, I love u bitch, Fuck off, Thanks, I´m calling the police");    
  });
 
 bot.onText(/\Córtate, córtate/, (msg) => {
