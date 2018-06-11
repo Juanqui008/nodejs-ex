@@ -7,7 +7,6 @@
 const bot = new TelegramBot(token, {polling: true});
  const request = require('request');
  
-// Cuando mandes el mensaje "Hola" reconoce tú nombre y genera un input: Hola Daniel
  bot.on('message', (msg) => {
  var Hola = "hola";
  if (msg.text.toString().toLowerCase().indexOf(Hola) === 0) {
@@ -15,16 +14,15 @@ const bot = new TelegramBot(token, {polling: true});
  }
  });
  
- // Cuando mandes el mensaje "Gracias" reconoce tú nombre y genera un input: De nada Daniel
  bot.on('message', (msg) => {
- var Hola = "Gracias";
- if (msg.text.toString().toLowerCase().indexOf(Gracias) === 0) {
+ var Denada = "De nada";
+ if (msg.text.toString().toLowerCase().indexOf(Denada) === 0) {
      bot.sendMessage(msg.chat.id, "De nada " + msg.from.first_name);
  }
  });
  
  bot.onText(/\Lista de comandos/, (msg) => {
- bot.sendMessage(msg.chat.id, "Hola, Hola Josemi, Córtate, córtate, Is that allowed?, Shut up, Hurricane Katrina, A quién le estás diciendo shut up, Chillin in the hot tub, Pussy, Hostión, I love u bitch, Fuck off, Thanks, I´m calling the police, What the fuck, I won´t hesitate bitch");    
+ bot.sendMessage(msg.chat.id, "Hola, Gracias, Hola Josemi, Córtate, córtate, Is that allowed?, Shut up, Hurricane Katrina, A quién le estás diciendo shut up, Chillin in the hot tub, Pussy, Hostión, I love u bitch, Fuck off, Thanks, I´m calling the police, What the fuck, I won´t hesitate bitch");    
  });
 
 bot.onText(/\Córtate, córtate/, (msg) => {
