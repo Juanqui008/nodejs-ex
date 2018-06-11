@@ -11,7 +11,15 @@ const bot = new TelegramBot(token, {polling: true});
  bot.on('message', (msg) => {
  var Hola = "hola";
  if (msg.text.toString().toLowerCase().indexOf(Hola) === 0) {
-     bot.sendMessage(msg.chat.id, "Hola" + msg.from.first_name);
+     bot.sendMessage(msg.chat.id, "Hola " + msg.from.first_name);
+ }
+ });
+ 
+ // Cuando mandes el mensaje "Gracias" reconoce tú nombre y genera un input: De nada Daniel
+ bot.on('message', (msg) => {
+ var Hola = "Gracias";
+ if (msg.text.toString().toLowerCase().indexOf(Gracias) === 0) {
+     bot.sendMessage(msg.chat.id, "De nada " + msg.from.first_name);
  }
  });
  
@@ -91,6 +99,15 @@ bot.onText(/\Hola Josemi/, (msg) => {
    const audio = request(url);
    bot.sendVoice(msg.chat.id, audio);  
   });
-
+bot.onText(/\What the fuck/, (msg) => {
+   const url = 'https://ia601509.us.archive.org/3/items/WhatTheFuckIsUpKyle.128kbitAAC/What%20the%20fuck%20is%20up%20Kyle.%20%28128kbit_AAC%29.mp3';
+   const audio = request(url);
+   bot.sendVoice(msg.chat.id, audio);  
+  });
+bot.onText(/\I won´t hesitate bitch/, (msg) => {
+   const url = 'https://ia601500.us.archive.org/16/items/IWontHesitateBitch96kbitAAC/I%20won%27t%20hesitate%20bitch%20%2896kbit_AAC%29.mp3';
+   const audio = request(url);
+   bot.sendVoice(msg.chat.id, audio);  
+  });
 
 
