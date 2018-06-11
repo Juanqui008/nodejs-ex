@@ -22,7 +22,7 @@ const bot = new TelegramBot(token, {polling: true});
  });
  
  bot.onText(/\Lista de comandos/, (msg) => {
- bot.sendMessage(msg.chat.id, "Hola, Gracias, Hola Josemi, Córtate, córtate, Is that allowed?, Shut up, Hurricane Katrina, A quién le estás diciendo shut up, Chillin in the hot tub, Pussy, Hostión, I love u bitch, Fuck off, Thanks, Im calling the police, What the fuck, I wont hesitate bitch");    
+ bot.sendMessage(msg.chat.id, "Hola, Gracias, Hola Josemi, Córtate, córtate, Is that allowed?, Shut up, Hurricane Katrina, A quién le estás diciendo shut up, Chillin in the hot tub, Pussy, Hostión, I love u bitch, Fuck off, Thanks, I'm calling the police, What the fuck, I won't hesitate bitch");    
  });
 
 bot.onText(/\Córtate, córtate/, (msg) => {
@@ -87,7 +87,7 @@ bot.onText(/\Thanks/, (msg) => {
    const audio = request(url);
    bot.sendVoice(msg.chat.id, audio);  
   });
-bot.onText(/\Im calling the police/, (msg) => {
+bot.onText(/\I'm calling the police/, (msg) => {
    const url = 'https://ia601508.us.archive.org/20/items/ImCallingThePolice128kbitAAC/I%27m%20calling%20the%20police%20%28128kbit_AAC%29.mp3';
    const audio = request(url);
    bot.sendVoice(msg.chat.id, audio);  
@@ -102,8 +102,13 @@ bot.onText(/\What the fuck/, (msg) => {
    const audio = request(url);
    bot.sendVoice(msg.chat.id, audio);  
   });
-bot.onText(/\I wont hesitate bitch/, (msg) => {
+bot.onText(/\I won't hesitate bitch/, (msg) => {
    const url = 'https://ia601500.us.archive.org/16/items/IWontHesitateBitch96kbitAAC/I%20won%27t%20hesitate%20bitch%20%2896kbit_AAC%29.mp3';
+   const audio = request(url);
+   bot.sendVoice(msg.chat.id, audio);  
+  });
+bot.onText(/\Miss Kesha/, (msg) => {
+   const url = 'https://ia601509.us.archive.org/33/items/OhMyFuckingGodSheFuckingDead128kbitAAC/Oh%20my%20fucking%20god%20she%20fucking%20dead%20%28128kbit_AAC%29.mp3';
    const audio = request(url);
    bot.sendVoice(msg.chat.id, audio);  
   });
