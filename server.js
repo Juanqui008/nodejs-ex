@@ -15,9 +15,9 @@ const bot = new TelegramBot(token, {polling: true});
  });
  
  bot.on('message', (msg) => {
- var Denada = "De nada";
- if (msg.text.toString().toLowerCase().indexOf(Denada) === 0) {
-     bot.sendMessage(msg.chat.id, "De nada " + msg.from.first_name);
+ var Gracias = "gracias";
+ if (msg.text.toString().toLowerCase().indexOf(Gracias) === 0) {
+     bot.sendMessage(msg.chat.id, "Ntr " + msg.from.first_name);
  }
  });
  
