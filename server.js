@@ -1,108 +1,71 @@
-//  OpenShift sample Node application
-var express = require('express'),
-    app     = express(),
-    morgan  = require('morgan');
-    
-Object.assign=require('object-assign')
+﻿ const TelegramBot = require('node-telegram-bot-api');
+ 
+ // API Token Telegram
+ const token = '591985463:AAHM2942GL8CQKM4k_IjokQEaCJdsbNmz5Y';
 
-app.engine('html', require('ejs').renderFile);
-app.use(morgan('combined'))
+ // Creamos un bot que usa 'polling'para obtener actualizaciones
+const bot = new TelegramBot(token, {polling: true});
+ const request = require('request');
+ 
+// Cuando mandes el mensaje "Hola" reconoce tú nombre y genera un input: Hola Daniel
+ bot.on('message', (msg) => {
+ var Hola = "hola";
+ if (msg.text.toString().toLowerCase().indexOf(Hola) === 0) {
+     bot.sendMessage(msg.chat.id, "Hola  " + msg.from.first_name);
+ }
+ });
+ 
+ bot.onText(/\Lista de comandos/, (msg) => {
+ bot.sendMessage(msg.chat.id, "Hola, Córtate, córtate, Is that allowed?, Shut up, Hurricane Katrina, A quién le estás diciendo shut up, Chillin in the hot tub, Pussy, Hostión");    
+ });
 
-var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
-    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
-    mongoURLLabel = "";
-
-if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
-  var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
-      mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
-      mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
-      mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
-      mongoPassword = process.env[mongoServiceName + '_PASSWORD']
-      mongoUser = process.env[mongoServiceName + '_USER'];
-
-  if (mongoHost && mongoPort && mongoDatabase) {
-    mongoURLLabel = mongoURL = 'mongodb://';
-    if (mongoUser && mongoPassword) {
-      mongoURL += mongoUser + ':' + mongoPassword + '@';
-    }
-    // Provide UI label that excludes user id and pw
-    mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
-    mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
-
-  }
-}
-var db = null,
-    dbDetails = new Object();
-
-var initDb = function(callback) {
-  if (mongoURL == null) return;
-
-  var mongodb = require('mongodb');
-  if (mongodb == null) return;
-
-  mongodb.connect(mongoURL, function(err, conn) {
-    if (err) {
-      callback(err);
-      return;
-    }
-
-    db = conn;
-    dbDetails.databaseName = db.databaseName;
-    dbDetails.url = mongoURLLabel;
-    dbDetails.type = 'MongoDB';
-
-    console.log('Connected to MongoDB at: %s', mongoURL);
+bot.onText(/\Córtate, córtate/, (msg) => {
+   const url = 'https://ia801506.us.archive.org/28/items/LosPistolerosDelEclipse.mp3/Los_pistoleros_del_eclipse.mp3';
+   const audio = request(url);
+   bot.sendVoice(msg.chat.id, audio);  
   });
-};
 
-app.get('/', function (req, res) {
-  // try to initialize the db on every request if it's not already
-  // initialized.
-  if (!db) {
-    initDb(function(err){});
-  }
-  if (db) {
-    var col = db.collection('counts');
-    // Create a document with request IP and current time of request
-    col.insert({ip: req.ip, date: Date.now()});
-    col.count(function(err, count){
-      if (err) {
-        console.log('Error running count. Message:\n'+err);
-      }
-      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
-    });
-  } else {
-    res.render('index.html', { pageCountMessage : null});
-  }
-});
+bot.onText(/\Is that allowed?/, (msg) => {
+   const url = 'https://ia601505.us.archive.org/15/items/IsThisAllowedORIGINALVINE/Is_This_Allowed_ORIGINAL_VINE.mp3';
+   const audio = request(url);
+   bot.sendVoice(msg.chat.id, audio);  
+  });
 
-app.get('/pagecount', function (req, res) {
-  // try to initialize the db on every request if it's not already
-  // initialized.
-  if (!db) {
-    initDb(function(err){});
-  }
-  if (db) {
-    db.collection('counts').count(function(err, count ){
-      res.send('{ pageCount: ' + count + '}');
-    });
-  } else {
-    res.send('{ pageCount: -1 }');
-  }
-});
+bot.onText(/\Shut up/, (msg) => {
+   const url = 'https://ia601506.us.archive.org/23/items/VineEnEspanolYellingShutUpForNoReason/Vine_en_Espanol_-_Yelling_shut_up_for_no_reason.mp3';
+   const audio = request(url);
+   bot.sendVoice(msg.chat.id, audio);  
+  });
 
-// error handling
-app.use(function(err, req, res, next){
-  console.error(err.stack);
-  res.status(500).send('Something bad happened!');
-});
+bot.onText(/\Hurricane Katrina/, (msg) => {
+   const url = 'https://ia601507.us.archive.org/0/items/MoreLikeHurricaneTortillaVINE128kbitOpus/More%20like%20hurricane%20tortilla%20VINE%20%28128kbit_Opus%29.ogg';
+   const audio = request(url);
+   bot.sendVoice(msg.chat.id, audio);  
+  });
 
-initDb(function(err){
-  console.log('Error connecting to Mongo. Message:\n'+err);
-});
+bot.onText(/\A quién le estás diciendo shut up/, (msg) => {
+   const url = 'https://ia601509.us.archive.org/27/items/ShutUp_201806/shut%20up.mp3';
+   const audio = request(url);
+   bot.sendVoice(msg.chat.id, audio);  
+  });
 
-app.listen(port, ip);
-console.log('Server running on http://%s:%s', ip, port);
+bot.onText(/\Chillin in the hot tub/, (msg) => {
+   const url = 'https://ia601505.us.archive.org/5/items/AnthonyPadillaChillinInTheHotTubVine128kbitVorbis/Anthony%20Padilla%20_Chillin%20in%20the%20Hot%20Tub_%20Vine%20%28128kbit_Vorbis%29.mp3';
+   const audio = request(url);
+   bot.sendVoice(msg.chat.id, audio);  
+  });
 
-module.exports = app ;
+bot.onText(/\Pussy/, (msg) => {
+   const url = 'https://ia601505.us.archive.org/3/items/BoBurnhamClubJamVine/Bo_Burnham_-_Club_Jam_Vine.mp3';
+   const audio = request(url);
+   bot.sendVoice(msg.chat.id, audio);  
+  });
+
+bot.onText(/\Hostión/, (msg) => {
+   const url = 'https://ia601503.us.archive.org/11/items/ComeGetYourJuice/Come%20Get%20Your%20Juice.mp3';
+   const audio = request(url);
+   bot.sendVoice(msg.chat.id, audio);  
+  });
+
+
+
