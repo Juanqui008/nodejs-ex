@@ -22,7 +22,7 @@ const bot = new TelegramBot(token, {polling: true});
  });
  
  bot.onText(/\Lista de comandos/, (msg) => {
- bot.sendMessage(msg.chat.id, "Hola, Gracias, Hola Josemi, Córtate, córtate, Is that allowed?, Shut up, Hurricane Katrina, A quién le estás diciendo shut up, Chillin in the hot tub, Pussy, Hostión, I love u bitch, Fuck off, Thanks, I'm calling the police, What the fuck, I won't hesitate bitch");    
+ bot.sendMessage(msg.chat.id, "Hola, Gracias, Hola Josemi, Córtate, córtate, Is that allowed?, Shut up, Hurricane Katrina, A quién le estás diciendo shut up, Chillin in the hot tub, Pussy, Hostión, I love u bitch, Fuck off, Thanks, I'm calling the police, Wtf, I won't hesitate bitch");    
  });
 
 bot.onText(/\Córtate, córtate/, (msg) => {
@@ -97,7 +97,7 @@ bot.onText(/\Hola Josemi/, (msg) => {
    const audio = request(url);
    bot.sendVoice(msg.chat.id, audio);  
   });
-bot.onText(/\What the fuck/, (msg) => {
+bot.onText(/\Wtf/, (msg) => {
    const url = 'https://ia601509.us.archive.org/3/items/WhatTheFuckIsUpKyle.128kbitAAC/What%20the%20fuck%20is%20up%20Kyle.%20%28128kbit_AAC%29.mp3';
    const audio = request(url);
    bot.sendVoice(msg.chat.id, audio);  
@@ -112,5 +112,11 @@ bot.onText(/\Miss Kesha/, (msg) => {
    const audio = request(url);
    bot.sendVoice(msg.chat.id, audio);  
   });
+bot.onText(/\A child/, (msg) => {
+   const url = 'https://ia601507.us.archive.org/32/items/AChildVine96kbitAAC/A%20child%20vine%20%2896kbit_AAC%29.aac';
+   const audio = request(url);
+   bot.sendVoice(msg.chat.id, audio);  
+  });
+
 
 
