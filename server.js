@@ -97,8 +97,8 @@ bot.onText(/\Hola Josemi/, (msg) => {
    const audio = request(url);
    bot.sendVoice(msg.chat.id, audio);  
   });
-bot.onText(/\Wtf/, (msg) => {
-   const url = 'https://ia601509.us.archive.org/3/items/WhatTheFuckIsUpKyle.128kbitAAC/What%20the%20fuck%20is%20up%20Kyle.%20%28128kbit_AAC%29.mp3';
+bot.onText(/\What the fuck/, (msg) => {
+   const url = 'https://ia601501.us.archive.org/16/items/Wtf128kbitAAC/Wtf%28128kbit_AAC%29.mp3';
    const audio = request(url);
    bot.sendVoice(msg.chat.id, audio);  
   });
