@@ -22,7 +22,7 @@ const bot = new TelegramBot(token, {polling: true});
  });
  
  bot.onText(/\Lista de comandos/, (msg) => {
- bot.sendMessage(msg.chat.id, "Hola, Gracias, Hola Josemi, Córtate, córtate, Is that allowed?, Shut up, Hurricane Katrina, A quién le estás diciendo shut up, Chillin in the hot tub, Pussy, Hostión, I love u bitch, Fuck off, Thanks, I'm calling the police, Wtf, I won't hesitate bitch");    
+ bot.sendMessage(msg.chat.id, "Hola, Gracias, Hola Josemi, Córtate, córtate, Is that allowed?, Shut up, Hurricane Katrina, A quién le estás diciendo shut up, Chillin in the hot tub, Pussy, Hostión, I love u bitch, Fuck off, Thanks, I'm calling the police, What the fuck, I won't hesitate bitch");    
  });
 
 bot.onText(/\Córtate, córtate/, (msg) => {
@@ -98,7 +98,7 @@ bot.onText(/\Hola Josemi/, (msg) => {
    bot.sendVoice(msg.chat.id, audio);  
   });
 bot.onText(/\What the fuck/, (msg) => {
-   const url = 'https://ia601501.us.archive.org/16/items/Wtf128kbitAAC/Wtf%28128kbit_AAC%29.mp3';
+   const url = 'https://ia801501.us.archive.org/16/items/Wtf128kbitAAC/Wtf%28128kbit_AAC%29.mp3';
    const audio = request(url);
    bot.sendVoice(msg.chat.id, audio);  
   });
